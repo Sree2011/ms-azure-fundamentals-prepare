@@ -32,3 +32,41 @@ A --> D[Networking services]
 - Network controls
 - Applications
 - Identity and infrastructure
+
+## III. CLOUD MODELS
+
+There are three main cloud models:
+
+- Private Cloud
+- Public Cloud
+- Hybrid Cloud
+
+```mermaid
+mindmap
+    root((cloud models))
+        (Private Cloud)
+            (Definition)
+                A private cloud is an IT infrastructure used by a single organization, providing greater control and customization.
+
+            (Benefits)
+                Enhanced security and compliance, tailored resources, and dedicated management.
+
+            (Drawbacks)
+                Higher costs compared to public clouds, limited scalability, and reduced agility.
+
+            (Hosting)
+                Private clouds can be on-site or hosted off-site by a dedicated datacenter.
+        (Public Cloud)
+            (Definition)
+                A public cloud delivers IT services over the internet and is accessible to multiple organizations or individuals.
+
+            (Benefits)
+                Cost-effective, scalable, and flexible infrastructure. Shared resources and easy access to services.
+            (Drawbacks)
+                Security concerns due to shared environment, potential compliance challenges, and limited customization.
+
+            (Hosting)
+                Public clouds are hosted by third-party providers in datacenters distributed globally.
+
+
+```
