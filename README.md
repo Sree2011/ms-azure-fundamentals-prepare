@@ -5,3 +5,7 @@ This certification exam consists of 3 major components:
 1. [Describe cloud concepts](./cloud_concepts.md)
 2. [Describe Azure architecture and services](./architecture_services.md)
 3. [Describe Azure Management and Governance](./management_governance.md)
+
+The resources for learning are:
+
+1. [Microsoft Learn - Azure Fundamentals - Course](https://learn.microsoft.com/en-us/training/courses/az-900t00/)
