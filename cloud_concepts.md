@@ -42,48 +42,27 @@ There are three main cloud models:
 - Hybrid Cloud
 
 ```mermaid
-mindmap
-    root((cloud models))
-        (Private Cloud)
-            (Definition)
-                A private cloud is an IT infrastructure used by a single organization, providing greater control and customization.
+graph LR
+  P[Cloud Models]
+  P --> A[Private Cloud]
+  P --> B[Public Cloud]
+  P --> C[Hybrid Cloud]
 
-            (Benefits)
-                Enhanced security and compliance, tailored resources, and dedicated management.
+  A --> |Definition|D["IT infrastructure used by a single organization for greater control and customization"]
+  A --> |Benefits| E["Enhanced security, compliance, tailored resources, and dedicated management"]
+  A --> |Drawbacks| F["Higher costs, limited scalability, and reduced agility"]
+  A --> |Hosting| G["On-site or off-site by a dedicated datacenter"]
 
-            (Drawbacks)
-                Higher costs compared to public clouds, limited scalability, and reduced agility.
+  B --> |Definition| H["Delivers IT services over the internet, accessible to multiple organizations"]
+  B --> |Benefits|I["Cost-effective, scalable, flexible infrastructure with shared resources"]
+  B --> |Drawbacks| J["Security concerns, compliance challenges, and limited customization"]
+  B --> |Hosting| K["Third-party providers’ datacenters globally"]
 
-            (Hosting)
-                Private clouds can be on-site or hosted off-site by a dedicated datacenter.
-        (Public Cloud)
-            (Definition)
-                A public cloud delivers IT services over the internet and is accessible to multiple organizations or individuals.
+  C --> |Definition| L["Combines private and public clouds for seamless integration"]
+  C --> |Benefits| M["Flexibility, scalability, data control"]
+  C --> |Drawbacks| N["Complexity, integration challenges, security concerns"]
+  C --> |Hosting| O["Ideal for legacy systems alongside modern cloud applications or data sovereignty requirements"]
 
-            (Benefits)
-                Cost-effective, scalable, and flexible infrastructure. Shared resources and easy access to services.
-            (Drawbacks)
-                Security concerns due to shared environment, potential compliance challenges, and limited customization.
-
-            (Hosting)
-                Public clouds are hosted by third-party providers in datacenters distributed globally.
-
-        (Hybrid Cloud)
-                (Definition)
-                    A hybrid cloud combines elements of both private and public clouds, allowing seamless integration between on-premises infrastructure and cloud services.
-
-
-                (Benefits)
-                    Flexibility: Organizations can choose where to host workloads based on requirements.
-                    Scalability: Easily scale resources by leveraging both private and public cloud components.
-                    Data Control: Sensitive data can remain on-premises while utilizing cloud services.
-                (Drawbacks)
-                    Complexity: Managing hybrid environments requires expertise in both cloud and on-premises technologies.
-                    Integration: Ensuring smooth communication between private and public cloud segments.
-                    Security: Addressing security concerns across hybrid boundaries..
-
-                (Hosting)
-                    Hybrid clouds are ideal for scenarios where legacy systems coexist with modern cloud applications or when data sovereignty requirements exist.
 
 
 ```
