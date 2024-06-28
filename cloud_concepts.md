@@ -42,27 +42,36 @@ There are three main cloud models:
 - Hybrid Cloud
 
 ```mermaid
-graph LR
-  P[Cloud Models]
-  P --> A[Private Cloud]
-  P --> B[Public Cloud]
-  P --> C[Hybrid Cloud]
+mindmap
+    root((cloud models))
+        (Private Cloud)
+            (Definition)
+                [IT infrastructure used by a single organization for greater control and customization]
+            (Benefits)
+                [Enhanced security, compliance, tailored resources, and dedicated management]
+            (Drawbacks)
+                [Higher costs, limited scalability, and reduced agility]
+            (Hosting)
+                [On-site or off-site by a dedicated datacenter]
 
-  A --> |Definition|D["IT infrastructure used by a single organization for greater control and customization"]
-  A --> |Benefits| E["Enhanced security, compliance, tailored resources, and dedicated management"]
-  A --> |Drawbacks| F["Higher costs, limited scalability, and reduced agility"]
-  A --> |Hosting| G["On-site or off-site by a dedicated datacenter"]
+        (Public Cloud)
+            (Definition)
+                [Delivers IT services over the internet, accessible to multiple organizations]
+            (Benefits)
+                [Cost-effective, scalable, flexible infrastructure with shared resources]
+            (Drawbacks)
+                [Security concerns, compliance challenges, and limited customization]
+            (Hosting)
+                [Third-party providers’ datacenters globally]
 
-  B --> |Definition| H["Delivers IT services over the internet, accessible to multiple organizations"]
-  B --> |Benefits|I["Cost-effective, scalable, flexible infrastructure with shared resources"]
-  B --> |Drawbacks| J["Security concerns, compliance challenges, and limited customization"]
-  B --> |Hosting| K["Third-party providers’ datacenters globally"]
-
-  C --> |Definition| L["Combines private and public clouds for seamless integration"]
-  C --> |Benefits| M["Flexibility, scalability, data control"]
-  C --> |Drawbacks| N["Complexity, integration challenges, security concerns"]
-  C --> |Hosting| O["Ideal for legacy systems alongside modern cloud applications or data sovereignty requirements"]
-
-
+        (Hybrid Cloud)
+            (Definition)
+                [Combines private and public clouds for seamless integration]
+            (Benefits)
+                [Flexibility, scalability, data control]
+            (Drawbacks)
+                [Complexity, integration challenges, security concerns]
+            (Hosting)
+                [Ideal for legacy systems alongside modern cloud applications or data sovereignty requirements]
 
 ```
