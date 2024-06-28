@@ -68,5 +68,22 @@ mindmap
             (Hosting)
                 Public clouds are hosted by third-party providers in datacenters distributed globally.
 
+        (Hybrid Cloud)
+                (Definition)
+                    A hybrid cloud combines elements of both private and public clouds, allowing seamless integration between on-premises infrastructure and cloud services.
+
+
+                (Benefits)
+                    Flexibility: Organizations can choose where to host workloads based on requirements.
+                    Scalability: Easily scale resources by leveraging both private and public cloud components.
+                    Data Control: Sensitive data can remain on-premises while utilizing cloud services.
+                (Drawbacks)
+                    Complexity: Managing hybrid environments requires expertise in both cloud and on-premises technologies.
+                    Integration: Ensuring smooth communication between private and public cloud segments.
+                    Security: Addressing security concerns across hybrid boundaries..
+
+                (Hosting)
+                    Hybrid clouds are ideal for scenarios where legacy systems coexist with modern cloud applications or when data sovereignty requirements exist.
+
 
 ```
