@@ -35,11 +35,7 @@ A --> D[Networking services]
 
 ## III. CLOUD MODELS
 
-There are three main cloud models:
-
-- Private Cloud
-- Public Cloud
-- Hybrid Cloud
+### BASED ON HOSTING:
 
 ```mermaid
 mindmap
@@ -74,4 +70,29 @@ mindmap
             (Hosting)
                 [Ideal for legacy systems alongside modern cloud applications or data sovereignty requirements]
 
+```
+
+### BASED ON PRICING:
+
+```mermaid
+mindmap
+    root((Cloud Pricing Models))
+        (On-Demand)
+            [Pay for resources as you use them, without any upfront commitments.]
+            [Ideal for unpredictable workloads or short-term needs.]
+            [Flexibility to scale resources up or down based on demand.]
+
+        (Spot Pricing)
+            [Bid on unused cloud resources at a lower price.]
+            [Suitable for non-critical workloads or batch processing.]
+            [Availability depends on resource availability and demand.]
+
+        (Reserved Instances)
+            [Commit to using specific resources for a fixed term of 1-3 years.]
+            [Offers cost savings compared to on-demand pricing.]
+            [Best for stable workloads with predictable usage patterns.]
+        (Volume Discounts or Tier-Based Pricing)
+            [Discounts based on usage volume or commitment levels.]
+            [The more you use, the lower the per-unit cost.]
+            [Encourages long-term usage and cost optimization.]
 ```
