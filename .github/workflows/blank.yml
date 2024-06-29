@@ -30,17 +30,20 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-
       - name: Configure Git identity
         run: |
           git config --global user.email "gundrajusreesainandini@gmail.com"
           git config --global user.name "Sree Sai Nandini Gundraju"
 
-      - name: Commit and push output folder
+      - name: Check for changes
         run: |
-          git add _output
-          git commit -m "Add generated PDF files"
-          git push origin main
+          if [ -n "$(git status --porcelain)" ]; then
+            git add _output
+            git commit -m "Add generated PDF files"
+            git push origin main
+          else
+            echo "No changes to commit"
+            
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v3
         with:
