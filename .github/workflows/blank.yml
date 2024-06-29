@@ -25,10 +25,11 @@ jobs:
             markdown-pdf $f -o _output/${f%.md}.pdf
           done
 
-      - name: Authenticate with GitHub
-        uses: actions/github-token-auth@v1
+      - name: Checkout code
+        uses: actions/checkout@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Configure Git identity
         run: |
