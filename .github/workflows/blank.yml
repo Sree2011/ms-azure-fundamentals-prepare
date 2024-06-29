@@ -14,7 +14,7 @@ jobs:
       - name: Install Node.js and npm
         uses: actions/setup-node@v3
         with:
-          node-version: "14"
+          node-version: "16"
       - name: Install markdown-pdf
         run: npm install -g markdown-pdf@latest
       - name: Create output folder
@@ -37,7 +37,7 @@ jobs:
 
       - name: Check for changes
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
+          if [ -n "$(git status --porcelain)" ] then
             git add _output
             git commit -m "Add generated PDF files"
             git push origin main
