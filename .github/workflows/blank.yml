@@ -37,14 +37,14 @@ jobs:
       
       - name: Check for changes
         run: |
-          shell
-          if [ -n "$(git status --porcelain)" ] then
+          if [ -n "$(git status --porcelain)" ]; then
             git add _output
             git commit -m "Add generated PDF files"
             git push origin main
           else
             echo "No changes to commit"
           fi
+
 
             
       - name: Upload PDF artifact
