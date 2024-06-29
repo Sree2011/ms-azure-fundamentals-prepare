@@ -14,7 +14,7 @@ jobs:
       - name: Install Node.js and npm
         uses: actions/setup-node@v3
         with:
-          node-version: '14'
+          node-version: "14"
       - name: Install markdown-pdf
         run: npm install -g markdown-pdf@latest
       - name: Create output folder
@@ -24,6 +24,11 @@ jobs:
           for f in *.md; do
             markdown-pdf $f -o _output/${f%.md}.pdf
           done
+
+      - name: Authenticate with GitHub
+        uses: actions/github-token-auth@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Configure Git identity
         run: |
