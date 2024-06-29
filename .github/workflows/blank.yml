@@ -44,7 +44,8 @@ jobs:
             fi
           else
             echo "No changes to commit"
-            fi
+          fi
+
             
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v3
