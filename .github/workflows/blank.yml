@@ -30,7 +30,7 @@ jobs:
           for f in *.md; do
             cat $f
             echo
-          done | md-to-pdf > ../_output/result.pdf
+          done | md-to-pdf > ../result.pdf
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v2
