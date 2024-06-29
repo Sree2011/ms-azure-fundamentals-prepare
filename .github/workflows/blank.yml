@@ -10,22 +10,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3  # updated to v3
+        uses: actions/checkout@v3
       - name: Install Node.js and npm
-        uses: actions/setup-node@v3  # updated to v3
+        uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - name: Install md-to-pdf
-        run: npm install -g md-to-pdf@latest  # added @latest to ensure latest version
+      - name: Install markdown-pdf
+        run: npm install -g markdown-pdf@latest
       - name: Create output folder
         run: mkdir -p _output
       - name: Convert Markdown to PDF
         run: |
           for f in *.md; do
-            md-to-pdf $f -o _output/${f%.md}.pdf  # corrected the conversion command
+            markdown-pdf $f -o _output/${f%.md}.pdf
           done
       - name: Upload PDF artifact
-        uses: actions/upload-artifact@v3  # updated to v3
+        uses: actions/upload-artifact@v3
+        
         with:
           name: pdf-output
           path: _output/result.pdf
