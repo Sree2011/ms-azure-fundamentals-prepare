@@ -24,6 +24,12 @@ jobs:
           for f in *.md; do
             markdown-pdf $f -o _output/${f%.md}.pdf
           done
+
+      - name: Configure Git identity
+        run: |
+          git config --global user.email "gundrajusreesainandini@gmail.com"
+          git config --global user.name "Sree Sai Nandini Gundraju"
+
       - name: Commit and push output folder
         run: |
           git add _output
