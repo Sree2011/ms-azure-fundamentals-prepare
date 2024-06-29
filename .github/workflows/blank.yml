@@ -17,7 +17,7 @@ jobs:
         run: sudo apt-get install pandoc 
         
       - name: Install xelatex
-      - run: sudo apt-get install texlive-latex-base
+        run: sudo apt-get install texlive-latex-base
       
       - name: Merge Markdown files and create PDF
         run: |
