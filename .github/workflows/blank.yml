@@ -1,27 +1,39 @@
-name: CI
+name: Convert Markdown to PDF
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches:
+      - main  # Adjust this to your default branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Install Pandoc
-        run: sudo apt-get install pandoc
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-      - name: Install xelatex
-        run: sudo apt-get install texlive-latex-base
+      - name: Install md-to-pdf
+        run: npm install -g md-to-pdf
 
-      - name: Update TEXMF Database
-        run: texhash
+      - name: Create output folder
+        run: mkdir -p _output
 
-      - name: Merge Markdown files and create PDF
+      - name: Convert Markdown to PDF
         run: |
-          pandoc -s -o combined.pdf cloud_concepts.md architecture_services.md management_governance.md
+          cd test
+          for f in *.md; do
+            cat $f
+            echo
+          done | md-to-pdf > ../_output/result.pdf
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: pdf-output
+          path: _output/result.pdf
