@@ -21,4 +21,5 @@ jobs:
       
       - name: Merge Markdown files and create PDF
         run: |
+          texhash
           pandoc -s -o combined.pdf cloud_concepts.md architecture_services.md management_governance.md
