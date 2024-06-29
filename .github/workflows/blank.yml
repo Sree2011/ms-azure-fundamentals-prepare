@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Pandoc
+        run: sudo apt-get install pandoc
+
+      - name: Merge Markdown files and create PDF
+        run: |
+          pandoc -s -o combined.pdf cloud_concepts.md architecture_services.md management_governance.md
