@@ -15,6 +15,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch: true
 
+      - name: Authenticate with GitHub
+        uses: actions/github-token-auth@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN_WRITE }}
+
+
       - name: Install Node.js and npm
         uses: actions/setup-node@v3
         with:
