@@ -20,13 +20,16 @@ jobs:
         with:
           node-version: latest
       - name: Install markdown-pdf
-        run: npm install -g markdown-pdf@latest
+        run: |
+           npm install -g markdown-pdf@latest
+           npm install -g mermaid-filter
+           
       - name: Create output folder
         run: mkdir -p _output
       - name: Convert Markdown to PDF
         run: |
           for f in *.md; do
-            markdown-pdf --highlight-style=espresso -F "mermaid-filter.cmd" $f -o _output/${f%.md}.pdf
+            markdown-pdf --highlight-style=espresso -F mermaid-filter $f -o _output/${f%.md}.pdf
           done
       - name: Configure Git identity
         run: |
