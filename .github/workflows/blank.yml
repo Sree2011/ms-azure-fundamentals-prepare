@@ -21,6 +21,7 @@ jobs:
           node-version: latest
       - name: Install pandoc
         run: |
+          sudo apt-get install texlive-latex-base
           sudo apt-get install pandoc
           npm install -g mermaid-filter
         
