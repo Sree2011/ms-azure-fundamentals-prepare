@@ -10,16 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch: true
-
-      - name: Authenticate with GitHub
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN_WRITE }}
-
 
       - name: Install Node.js and npm
         uses: actions/setup-node@v3
