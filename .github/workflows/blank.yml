@@ -24,7 +24,7 @@ jobs:
       - name: Install Node.js and npm
         uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          node-version: latest
       - name: Install markdown-pdf
         run: npm install -g markdown-pdf@latest
       - name: Create output folder
