@@ -20,7 +20,8 @@ jobs:
         with:
           node-version: latest
       - name: Install pandoc
-        run: npm install -g pandoc@latest
+        run: sudo apt-get install pandoc
+        
       - name: Create output folder
         run: mkdir -p _output
       - name: Convert Markdown to PDF
