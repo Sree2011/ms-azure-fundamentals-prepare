@@ -26,7 +26,7 @@ jobs:
       - name: Convert Markdown to PDF
         run: |
           for f in *.md; do
-            markdown-pdf $f -o _output/${f%.md}.pdf
+            markdown-pdf --highlight-style=espresso -F "mermaid-filter.cmd" $f -o _output/${f%.md}.pdf
           done
 
       - name: Configure Git identity
