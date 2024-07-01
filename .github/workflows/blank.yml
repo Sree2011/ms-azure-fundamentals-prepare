@@ -19,20 +19,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: latest
-      - name: Install pandoc
-        run: |
-          sudo apt-get install texlive-latex-base
-          sudo apt-get install pandoc
-          npm install -g mermaid-filter
-        
+      - name: Install markdown-pdf
+        run: npm install -g markdown-pdf@latest
       - name: Create output folder
         run: mkdir -p _output
       - name: Convert Markdown to PDF
         run: |
           for f in *.md; do
-            pandoc -s -o _output/${f%.md}.pdf --pdf-engine=pdflatex --highlight-style=espresso --filter mermaid-filter $f
+            markdown-pdf --highlight-style=espresso -F "mermaid-filter.cmd" $f -o _output/${f%.md}.pdf
           done
-
       - name: Configure Git identity
         run: |
           git config --global user.email "gundrajusreesainandini@gmail.com"
@@ -48,8 +43,6 @@ jobs:
           else
             echo "No changes to commit"
           fi
-
-
             
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
