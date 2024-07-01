@@ -20,14 +20,16 @@ jobs:
         with:
           node-version: latest
       - name: Install pandoc
-        run: sudo apt-get install pandoc
+        run: |
+          sudo apt-get install pandoc
+          npm install -g mermaid-filter
         
       - name: Create output folder
         run: mkdir -p _output
       - name: Convert Markdown to PDF
         run: |
           for f in *.md; do
-            pandoc -s -o _output/${f%.md}.pdf --highlight-style=espresso --filter mermaid-filter.cmd $f
+            pandoc -s -o _output/${f%.md}.pdf --highlight-style=espresso --filter mermaid-filter $f
           done
 
       - name: Configure Git identity
