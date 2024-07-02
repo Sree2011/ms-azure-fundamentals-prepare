@@ -1,0 +1,39 @@
+name: MD to PDF
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ubuntu
+        run: sudo apt-get update
+  
+      - name: Install dependencies
+        run: >
+          sudo apt-get install
+          pandoc
+          texlive-latex-base
+          texlive-fonts-recommended
+          texlive-fonts-extra
+          texlive-latex-extra
+      - name: Install mermaid filter
+        run: npm install --global mermaid-filter
+        
+      - name: MD to PDF with pandoc
+        run: |
+          for i in `find . -name "*.md" -type f`; do
+            pandoc -t pdf -F mermaid-filter -o "${i%.md}.pdf" "$i"
+          done
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.event.repository.name }}
+          path: "**/*.pdf"
