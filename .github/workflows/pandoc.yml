@@ -1,32 +1,37 @@
-name: Convert PDF to Markdown
+name: MD to PDF
 
 on:
+  workflow_dispatch:
   push:
-    paths:
-    - '**.md'
+  pull_request:
 
 jobs:
-  convert_md: 
+  build:
     runs-on: ubuntu-latest
     steps:
-    # We must checkout the latest version of the code to get a copy of all .md files
-    - name: Checkout Code
-      uses: actions/checkout@v2.0.0
-      with:
-        fetch-depth: 1
-    - name: Create .pdfs
-      uses: scottypate/md-to-pdf@v0.1.1
-      env: {
-        # Use this parameter to determine where the generated .pdf(s) will be stored.
-        PDF_DIR: './pdfs'
-      }
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v1.6.1
-      env:
-        # The token is built in to actions. No config required.
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        COMMIT_MESSAGE: Add .pdf files.
-        PULL_REQUEST_TITLE: Add .pdf files.
-        PULL_REQUEST_BRANCH: pdf-add
-        PULL_REQUEST_BODY: Here are the .pdf files you requested.
-        PULL_REQUEST_REVIEWERS: Sree2011
+      - name: Checkout Git repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ubuntu
+        run: sudo apt-get update
+  
+      - name: Install dependencies
+        run: >
+          sudo apt-get install
+          pandoc
+          texlive-latex-base
+          texlive-fonts-recommended
+          texlive-fonts-extra
+          texlive-latex-extra
+
+      - name: MD to PDF with pandoc
+        run: |
+          for i in `find . -name "*.md" -type f`; do
+            pandoc "$i" -o "${i%.md}.pdf"
+          done
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ github.event.repository.name }}
+          path: "**/*.pdf"
