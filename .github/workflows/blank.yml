@@ -18,17 +18,25 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: latest
-      - name: Install markdown-pdf
-        run: |
-          npm install -g markdown-pdf@latest
-          npm install -g mermaid-filter
+      - name: Install mermaid-filter
+        run: npm install --global mermaid-filter
+
+      - name: Install dependencies
+        run: >
+          sudo apt-get install
+          pandoc
+          texlive-latex-base
+          texlive-fonts-recommended
+          texlive-fonts-extra
+          texlive-latex-extra
 
       - name: Create output folder
         run: mkdir -p _output
+
       - name: Convert Markdown to PDF
         run: |
-          for f in *.md; do
-            markdown-pdf --highlight-style=espresso -F mermaid-filter $f -o _output/${f%.md}.pdf
+          for i in `find . -name "*.md" -type f`; do
+            pandoc -t pdf -F mermaid-filter -o "${i%.md}.pdf" "$i"
           done
       - name: Configure Git identity
         run: |
