@@ -47,6 +47,7 @@ jobs:
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git add _output
+            git add README.pdf architecture_services.pdf cloud_concepts.pdf management_governance.pdf mermaid-filter.err
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
             git commit -m "Add generated PDF files: $git_hash"
             git push origin main
