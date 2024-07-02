@@ -98,3 +98,13 @@ mindmap
             [The more you use, the lower the per-unit cost.]
             [Encourages long-term usage and cost optimization.]
 ```
+
+# SECTION 2: AZURE SERVICES AND ACCOUNTS
+
+## I. ARCHITECTURE OF A AZURE ACCOUNT
+
+[image1](./image.png)
+
+
+
+
