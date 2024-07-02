@@ -23,11 +23,13 @@ jobs:
           texlive-fonts-recommended
           texlive-fonts-extra
           texlive-latex-extra
-
+      - name: Install mermaid filter
+        run: pip install pandoc-mermaid-filter
+        
       - name: MD to PDF with pandoc
         run: |
           for i in `find . -name "*.md" -type f`; do
-            pandoc "$i" -o "${i%.md}.pdf"
+            pandoc "$i" -o "${i%.md}.pdf" --filter pandoc-mermaid
           done
 
       - name: Upload artifacts
