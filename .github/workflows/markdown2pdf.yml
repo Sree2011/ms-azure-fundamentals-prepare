@@ -61,3 +61,15 @@ jobs:
         with:
           name: pdf-output
           path: _output/
+
+      - name: Trigger Workflow B
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { owner, repo } = context.repo;
+            await octokit.actions.createWorkflowDispatch({
+              owner,
+              repo,
+              workflow_id: 'merge-pdf.yml', // Replace with your Workflow B file name
+            });
