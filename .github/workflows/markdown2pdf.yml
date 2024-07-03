@@ -8,6 +8,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      path: ./
+      filename: azure-notes
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -38,6 +41,14 @@ jobs:
           for i in $(find . -name "*.md" -type f); do
             pandoc -t pdf -F mermaid-filter -o "${i%.md}.pdf" "$i"
           done
+
+
+      - name: Merge pdfs
+        uses: elMuso/MergePDFs-action@1.1
+        with:
+          path: ${{ env.path }}
+          filename: ${{ env.filename }}
+        
       - name: Configure Git identity
         run: |
           git config --global user.email "gundrajusreesainandini@gmail.com"
@@ -47,7 +58,7 @@ jobs:
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git add _output
-            git add README.pdf architecture_services.pdf cloud_concepts.pdf management_governance.pdf mermaid-filter.err
+            git add azure-notes.pdf
             git_hash=$(git rev-parse --short "$GITHUB_SHA")
             git commit -m "Add generated PDF files: $git_hash"
             git push origin main
