@@ -44,6 +44,11 @@ jobs:
         uses: amoeba/combine-pdf-action@v1
         with:
           path: ./
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: combined-pdf
+          path: resources/
 
       - name: Configure Git identity
         run: |
