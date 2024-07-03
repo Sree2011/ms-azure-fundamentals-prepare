@@ -67,17 +67,3 @@ jobs:
         with:
           name: pdf-output
           path: _output/
-    needs:
-      name: Merge PDFs
-      on:
-        push:
-          branches:
-            - main
-  merge-pdfs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Merge PDFs
-        uses: elMuso/MergePDFs-action@1.1
-        with:
-          name: combined-pdf
-          path: ./combined.pdf
