@@ -22,20 +22,20 @@ jobs:
         run: npm install --global mermaid-filter
 
       - name: Install dependencies
-        run: >
-          sudo apt-get install
-          pandoc
-          texlive-latex-base
-          texlive-fonts-recommended
-          texlive-fonts-extra
-          texlive-latex-extra
+        run: |
+          sudo apt-get install \
+            pandoc \
+            texlive-latex-base \
+            texlive-fonts-recommended \
+            texlive-fonts-extra \
+            texlive-latex-extra
 
       - name: Create output folder
         run: mkdir -p _output
 
       - name: Convert Markdown to PDF
         run: |
-          for i in `find . -name "*.md" -type f`; do
+          for i in $(find . -name "*.md" -type f); do
             pandoc -t pdf -F mermaid-filter -o "${i%.md}.pdf" "$i"
           done
       - name: Configure Git identity
@@ -60,3 +60,4 @@ jobs:
         with:
           name: pdf-output
           path: _output/
+          
