@@ -43,7 +43,7 @@ jobs:
       - name: Merge pdfs
         uses: amoeba/combine-pdf-action@v1
         with:
-          path: ./
+          path: resources
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
         with:
