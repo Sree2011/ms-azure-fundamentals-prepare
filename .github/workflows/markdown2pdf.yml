@@ -39,17 +39,7 @@ jobs:
           for i in $(find . -name "*.md" -type f); do
             pandoc -t pdf -F mermaid-filter -o "${i%.md}.pdf" "$i"
           done
-
-      - name: Merge pdfs
-        uses: amoeba/combine-pdf-action@v1
-        with:
-          path: resources
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: combined-pdf
-          path: resources/combined.pdf
-
+          
       - name: Configure Git identity
         run: |
           git config --global user.email "gundrajusreesainandini@gmail.com"
