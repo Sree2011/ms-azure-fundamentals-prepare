@@ -8,9 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      path: ./
-      filename: azure-notes
+  
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -46,8 +44,8 @@ jobs:
       - name: Merge pdfs
         uses: amoeba/combine-pdf-action@v1
         with:
-          path: ${{ env.path }}
-          filename: ${{ env.filename }}
+          path: ./
+          
         
       - name: Configure Git identity
         run: |
@@ -71,3 +69,9 @@ jobs:
         with:
           name: pdf-output
           path: _output/
+
+      - name: Upload combined pdf
+        uses: actions/upload-artifact@v2
+        with:
+          name: combined-pdf
+          path: ./combined.pdf
