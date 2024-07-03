@@ -60,13 +60,12 @@ jobs:
         with:
           name: pdf-output
           path: _output/
-
-    needs:
-      name: Merge PDFs
+  needs:
+    merge-pdfs:
       on:
-        push:
-          branches:
-             - main
+      push:
+        branches:
+          - main
   merge-pdfs:
     runs-on: ubuntu-latest
     steps:
