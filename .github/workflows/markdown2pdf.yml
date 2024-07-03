@@ -44,7 +44,7 @@ jobs:
 
 
       - name: Merge pdfs
-        uses: elMuso/MergePDFs-action@1.1
+        uses: amoeba/combine-pdf-action@v1
         with:
           path: ${{ env.path }}
           filename: ${{ env.filename }}
